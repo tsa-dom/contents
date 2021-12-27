@@ -1,8 +1,10 @@
-name: CI on push
+name: Create HTML files
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'articles/**'
 
 jobs:
   deploy:
@@ -10,14 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      - uses: EndBug/add-and-commit@v7
         with:
-          source-directory: 'blogs'
-          destination-github-username: 'tsa-dom'
-          destination-repository-name: 'gh-pages'
-          user-email: tsa.dom@pm.me
-          target-branch: gh-pages
-          target-directory: 'blogs'
+          add: 'blogs'
+          author_name: Tapio Salonen
+          author_email: tsa.dom@pm.me
+          branch: main
+          branch_mode: create
+          message: 'Created files'
