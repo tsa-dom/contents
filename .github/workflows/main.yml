@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - run: bash publish.bash
       - uses: EndBug/add-and-commit@v7
         with:
           add: 'blogs'
