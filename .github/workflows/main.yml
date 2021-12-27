@@ -10,7 +10,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: bash publish.bash
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
@@ -21,3 +20,4 @@ jobs:
           destination-repository-name: 'gh-pages'
           user-email: tsa.dom@pm.me
           target-branch: gh-pages
+          target-directory: 'blogs'
