@@ -1,0 +1,25 @@
+name: CI on push
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: bash publish.bash
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          source-directory: 'blogs'
+          destination-github-username: 'tsa-dom'
+          destination-repository-name: 'gh-pages'
+          user-email: tsa.dom@pm.me
+          target-branch: gh-pages

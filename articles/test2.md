@@ -2,7 +2,7 @@
     <title>This is something very interesting</title>
     <meta
       name="description"
-      content="Lets try if the script can access this"
+      content="This is sneaky another"
       data-rh="true"
     />
 --->
