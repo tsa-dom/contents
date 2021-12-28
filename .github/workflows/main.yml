@@ -35,7 +35,7 @@ jobs:
         with:
           source-directory: 'blogs'
           destination-github-username: 'tsa-dom'
-          destination-repository-name: 'platform'
+          destination-repository-name: 'tsa-dom.github.io'
           user-email: tsa.dom@pm.me
           target-branch: gh-pages
           target-directory: 'blogs'
@@ -46,7 +46,7 @@ jobs:
         with:
           source-directory: 'html'
           destination-github-username: 'tsa-dom'
-          destination-repository-name: 'platform'
+          destination-repository-name: 'tsa-dom.github.io'
           user-email: tsa.dom@pm.me
           target-branch: gh-pages
           target-directory: 'pages'
