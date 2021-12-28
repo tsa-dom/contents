@@ -6,6 +6,7 @@ on:
     paths:
       - 'articles/**'
       - 'pages/**'
+      - '.github/workflows'
 
 jobs:
   html-files:
@@ -17,6 +18,7 @@ jobs:
       - uses: EndBug/add-and-commit@v7
         with:
           add: 'blogs'
+          add: 'html'
           author_name: Tapio Salonen
           author_email: tsa.dom@pm.me
           branch: main
