@@ -1,7 +1,13 @@
 rm -rf blogs
 rm -rf html
+rm -rf config
 mkdir blogs
 mkdir html
+mkdir config
+
+cd config
+echo "[]" > blogs.json
+cd ..
 
 for file in ./articles/*
 do
@@ -57,6 +63,11 @@ EOF
   cd blogs
   echo "$start$parsed$end" > $name
   cd ..
+
+  title="$(echo $parsed | grep -o -P '(?<=<title>).*(?=</title>)')"
+  description="$(echo $parsed | grep -o -P '(?<=<meta name="description" content=").*(?=" data-rh="true" />)')"
+
+  node dump.js $title $description
 done
 
 # Yeah I know, this is copy paste but I see this as a technical debt.
