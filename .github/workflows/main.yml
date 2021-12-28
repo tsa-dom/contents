@@ -28,25 +28,25 @@ jobs:
     needs: [html-files]
     steps:
       - uses: actions/checkout@v2
-      - name: Pushes blogs to another repository
+      - name: Push blogs to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source-directory: 'blogs'
           destination-github-username: 'tsa-dom'
-          destination-repository-name: 'gh-pages'
+          destination-repository-name: 'platform'
           user-email: tsa.dom@pm.me
           target-branch: gh-pages
           target-directory: 'blogs'
-      - name: Pushes pages to another repository
+      - name: Push pages to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
           source-directory: 'html'
           destination-github-username: 'tsa-dom'
-          destination-repository-name: 'gh-pages'
+          destination-repository-name: 'platform'
           user-email: tsa.dom@pm.me
           target-branch: gh-pages
           target-directory: 'pages'
