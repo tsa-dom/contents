@@ -1,8 +1,8 @@
 <!---
-    <title>This is something very interesting</title>
+    <title>Yeah</title>
     <meta
       name="description"
-      content="Third to try"
+      content="Modification to there"
       data-rh="true"
     />
 --->
