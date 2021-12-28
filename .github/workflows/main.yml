@@ -17,8 +17,6 @@ jobs:
       - run: bash build.bash
       - uses: EndBug/add-and-commit@v7
         with:
-          add: 'blogs'
-          add: 'html'
           author_name: Tapio Salonen
           author_email: tsa.dom@pm.me
           branch: main
