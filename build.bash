@@ -1,7 +1,8 @@
 rm -rf blogs
-rm about.html
-rm main.html
+rm -rf html
 mkdir blogs
+mkdir html
+
 for file in ./articles/*
 do
   v1='<!---'; v2='--->'
@@ -110,5 +111,7 @@ EOF
 EOF
 )
   parsed=${html:5:-4}
+  cd html
   echo "$start$parsed$end" > $name
+  cd ..
 done
