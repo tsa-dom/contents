@@ -17,5 +17,6 @@ My interests are:
 * DevOps
 * And much more!
 
-If you want to contact me, you can do it by email.
+If you want to contact me, you can do it by email:
+
 contacts.tapio@pm.me
