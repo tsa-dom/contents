@@ -49,3 +49,4 @@ jobs:
           destination-repository-name: 'gh-pages'
           user-email: tsa.dom@pm.me
           target-branch: gh-pages
+          target-directory: 'pages'
