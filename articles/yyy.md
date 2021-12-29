@@ -5,6 +5,10 @@
       content="Debug"
       data-rh="true"
     />
+    <meta
+      name="keywords"
+      content="Test"
+    >
 --->
 ### This is test article
 
