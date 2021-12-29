@@ -1,12 +1,12 @@
-rm -rf blogs
+rm -rf blog
 rm -rf html
 rm -rf config
-mkdir blogs
+mkdir blog
 mkdir html
 mkdir config
 
 cd config
-echo "[]" > blogs.json
+echo "[]" > blog.json
 cd ..
 
 for file in ./articles/*
@@ -84,7 +84,7 @@ EOF
 </html>
 EOF
 )
-  cd blogs
+  cd blog
   echo "$start$html$end" > $name
   cd ..
 

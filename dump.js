@@ -1,4 +1,4 @@
-const blogs = require('./config/blogs.json')
+const blog = require('./config/blog.json')
 const fs = require('fs')
 
 const data = JSON.parse(process.argv[7])
@@ -14,4 +14,4 @@ const blog = {
   created: new Date(data[data.length - 1].date).toISOString()
 }
 
-fs.writeFile('./config/blogs.json', JSON.stringify(Object(blogs).concat(blog)), err => console.log(err))
+fs.writeFile('./config/blog.json', JSON.stringify(Object(blog).concat(blog)), err => console.log(err))
