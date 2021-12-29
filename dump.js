@@ -4,7 +4,7 @@ const fs = require('fs')
 const data = JSON.parse(process.argv[7])
   .map(d => d.commit.author).sort((a, b) => new Date(b.date) - new Date(a.date))
 
-const blog = {
+const post = {
   file: process.argv[2],
   title: process.argv[3],
   description: process.argv[4],
@@ -14,4 +14,4 @@ const blog = {
   created: new Date(data[data.length - 1].date).toISOString()
 }
 
-fs.writeFile('./config/blog.json', JSON.stringify(Object(blog).concat(blog)), err => console.log(err))
+fs.writeFile('./config/blog.json', JSON.stringify(Object(blog).concat(post)), err => console.log(err))
