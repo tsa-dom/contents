@@ -89,7 +89,7 @@ EOF
   cd ..
 
   fileName="$(echo $file | grep -o -P '(?<=./articles/).*(?=.md)')"
-  commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file&page=1&per_page=1")
+  commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file")
 
   node dump.js "$fileName" "$title" "$description" "$keywords" "$author" "$commit"
 done
