@@ -3,7 +3,8 @@ const fs = require('fs')
 const blog = {
   file: process.argv[2],
   title: process.argv[3],
-  description: process.argv[4]
+  description: process.argv[4],
+  keywords: process.argv[5]
 }
 
 fs.writeFile('./config/blogs.json', JSON.stringify(Object(blogs).concat(blog)), err => console.log(err))

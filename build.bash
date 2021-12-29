@@ -67,7 +67,8 @@ EOF
   fileName="$(echo $file | grep -o -P '(?<=./articles/).*(?=.md)')"
   title="$(echo $parsed | grep -o -P '(?<=<title>).*(?=</title>)')"
   description="$(echo $parsed | grep -o -P '(?<=<meta name="description" content=").*(?=" data-rh="true" />)')"
-  node dump.js $fileName $title $description
+  keywords="$(echo $parsed | grep -o -P '(?<=<meta name="keywords" content=").*(?=" >)')"
+  node dump.js "$fileName" "$title" "$description" "$keywords"
 done
 
 # Yeah I know, this is copy paste but I see this as a technical debt.
