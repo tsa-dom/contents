@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          token: ${{ secrets.API_TOKEN_GITHUB }}
       - name: Push blogs to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
