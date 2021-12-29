@@ -3,10 +3,6 @@ name: Create HTML files
 on:
   push:
     branches: [main]
-    paths:
-      - 'articles/**'
-      - 'pages/**'
-      - '.github/workflows/**'
 
 jobs:
   html-files:
@@ -29,3 +25,32 @@ jobs:
           branch: main
           branch_mode: create
           message: 'Created files'
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Push blogs to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'blogs'
+          destination-github-username: 'tsa-dom'
+          destination-repository-name: 'tsa-dom.github.io'
+          user-email: tsa.dom@pm.me
+          target-branch: gh-pages
+          target-directory: 'blogs'
+      - name: Push pages to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'html'
+          destination-github-username: 'tsa-dom'
+          destination-repository-name: 'tsa-dom.github.io'
+          user-email: tsa.dom@pm.me
+          target-branch: gh-pages
+          target-directory: 'pages'
