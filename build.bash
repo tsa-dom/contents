@@ -12,7 +12,31 @@ cd ..
 for file in ./articles/*
 do
   v1='<!---'; v2='--->'
-  html=$(eval sed -n '/$v1/,/$v2/p' $file)
+  headers=$(eval sed -n '/$v1/,/$v2/p' $file)
+  title="$(echo $headers | grep -o -P '(?<=Title: ).*(?= :Title )')"
+  description="$(echo $headers | grep -o -P '(?<=Description: ).*(?= :Description )')"
+  keywords="$(echo $headers | grep -o -P '(?<=Keywords: ).*(?= :Keywords )')"
+  author="$(echo $headers | grep -o -P '(?<=Author: ).*(?= :Author )')"
+
+  html=$(cat << EOF
+
+    <title>$title</title>
+    <meta
+      name="description"
+      content="$description"
+      data-rh="true"
+    />
+    <meta
+      name="keywords"
+      content="$keywords"
+    >
+    <meta
+      name="author"
+      content="$author"
+    >
+EOF
+)
+
   name="$(echo $file | grep -o -P '(?<=./articles/).*(?=.md)').html"
   start=$(cat << EOF
 <!DOCTYPE html>
@@ -22,6 +46,7 @@ do
 EOF
 )
   end=$(cat << EOF
+
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
       // MIT License
@@ -59,16 +84,14 @@ EOF
 </html>
 EOF
 )
-  parsed=${html:5:-4}
   cd blogs
-  echo "$start$parsed$end" > $name
+  echo "$start$html$end" > $name
   cd ..
 
   fileName="$(echo $file | grep -o -P '(?<=./articles/).*(?=.md)')"
-  title="$(echo $parsed | grep -o -P '(?<=<title>).*(?=</title>)')"
-  description="$(echo $parsed | grep -o -P '(?<=<meta name="description" content=").*(?=" data-rh="true" />)')"
-  keywords="$(echo $parsed | grep -o -P '(?<=<meta name="keywords" content=").*(?=" >)')"
-  node dump.js "$fileName" "$title" "$description" "$keywords"
+  commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file&page=1&per_page=1")
+
+  node dump.js "$fileName" "$title" "$description" "$keywords" "$author" "$commit"
 done
 
 # Yeah I know, this is copy paste but I see this as a technical debt.

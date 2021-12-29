@@ -1,14 +1,8 @@
 <!---
-    <title>This is something very interesting</title>
-    <meta
-      name="description"
-      content="Lets try if the script can access this"
-      data-rh="true"
-    />
-    <meta
-      name="keywords"
-      content="Test"
-    >
+Title: This is something very interesting :Title
+Description: Lets try if the script can access this :Description
+Keywords: Test :Keywords
+Author: Tapio Salonen :Author
 --->
 ### This is test article
 
