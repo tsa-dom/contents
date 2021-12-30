@@ -1,10 +1,6 @@
 <!---
-    <title>All about me and my interests</title>
-    <meta
-      name="description"
-      content="Hi, I'm Tapio Salonen! I'm currently studying Computer Science at the University of Helsinki."
-      data-rh="true"
-    />
+<title>All about me and my interests</title>
+<description>Hi, I'm Tapio Salonen! I'm currently studying Computer Science at the University of Helsinki.</description>
 --->
 #### Hi, I'm Tapio Salonen!
 
