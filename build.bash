@@ -98,7 +98,21 @@ done
 for file in ./pages/*
 do
   v1='<!---'; v2='--->'
-  html=$(eval sed -n '/$v1/,/$v2/p' $file)
+  headers=$(eval sed -n '/$v1/,/$v2/p' $file)
+  title="$(echo $headers | grep -o -P '(?<=<title>).*(?=</title>)')"
+  description="$(echo $headers | grep -o -P '(?<=<description>).*(?=</description>)')"
+  
+  html=$(cat << EOF
+
+    <title>$title</title>
+    <meta
+      name="description"
+      content="$description"
+      data-rh="true"
+    />
+EOF
+)
+
   name="$(echo $file | grep -o -P '(?<=./pages/).*(?=.md)').html"
   start=$(cat << EOF
 <!DOCTYPE html>
@@ -145,8 +159,7 @@ EOF
 </html>
 EOF
 )
-  parsed=${html:5:-4}
   cd html
-  echo "$start$parsed$end" > $name
+  echo "$start$html$end" > $name
   cd ..
 done
