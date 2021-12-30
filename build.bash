@@ -13,10 +13,10 @@ for file in ./articles/*
 do
   v1='<!---'; v2='--->'
   headers=$(eval sed -n '/$v1/,/$v2/p' $file)
-  title="$(echo $headers | grep -o -P '(?<=Title: ).*(?= :Title )')"
-  description="$(echo $headers | grep -o -P '(?<=Description: ).*(?= :Description )')"
-  keywords="$(echo $headers | grep -o -P '(?<=Keywords: ).*(?= :Keywords )')"
-  author="$(echo $headers | grep -o -P '(?<=Author: ).*(?= :Author )')"
+  title="$(echo $headers | grep -o -P '(?<=<title>).*(?=</title>)')"
+  description="$(echo $headers | grep -o -P '(?<=<description>).*(?=</description>)')"
+  keywords="$(echo $headers | grep -o -P '(?<=<keywords>).*(?=</keywords>)')"
+  author="$(echo $headers | grep -o -P '(?<=<author>).*(?=</author>)')"
 
   html=$(cat << EOF
 

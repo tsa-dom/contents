@@ -1,8 +1,8 @@
 <!---
-Title: This is something very interesting :Title
-Description: Lets try if the script can access this :Description
-Keywords: Test :Keywords
-Author: Tapio Salonen :Author
+<title>This is something very interesting</title>
+<description>Lets try if the script can access this</description>
+<keywords>Test</keywords>
+<author>Tapio Salonen</author>
 --->
 ### This is test article
 

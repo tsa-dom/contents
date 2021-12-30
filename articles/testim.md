@@ -1,8 +1,8 @@
 <!---
-Title: This is image test :Title
-Description: Lets test how well this works with react markdown :Description
-Keywords: Test, Image :Keywords
-Author: Tapio Salonen :Author
+<title>This is image test</title>
+<description>Lets try images</description>
+<keywords>Test, Image</keywords>
+<author>Tapio Salonen</author>
 --->
 #### This is an image test
 
