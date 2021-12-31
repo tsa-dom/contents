@@ -7,6 +7,8 @@
 
 [Cyber Security Base](https://cybersecuritybase.mooc.fi/)
 
+-----
+
 ##### Essay 1
 
 *"Write an essay in your own words describing possible costs, direct and indirect, that may occur when dealing with cyber security attacks. The essay should be around 250 words."*
@@ -19,6 +21,8 @@ If an organization becomes a victim of a large cyber crime it could possibly lea
 
 Some cyber criminals could target health industries that contain a lot of sensitive personal data about patients. Since that data could contain for example medical reports of the patient it could lead to increased mental health problems among victims or untrust against health care industries. These kinds of costs are hard to measure financially. This could also lead in the long term to increased costs of society's healthcare.
 
+-----
+
 ##### Essay 2
 
 *"Watch the videos mentioned above and think about why is cyber security such a big deal today and whose job it actually is to protect you. Write an essay of 200 words reflecting the importance of cyber security and whose job it is."*
@@ -28,6 +32,8 @@ Cyber security today is a very huge issue and everyone should take it seriously.
 Organizations should be aware of how they use their customers' data. Do they really need some specific piece of it and where that data is supposed to store. It's also important that organizations invest in their employees' cyber security skills because it's not obvious that everyone is aware of it.
 
 Knowing at least the basics of cyber security is everyone's responsibility. Everyone should be able to think where they are sending their own data. How they protect their data for example with strong passwords and two-step authentication. Everyone should think twice before clicking anything on their device because many cyber attacks need a victim to click buttons. The more people know about the basics of cyber security it makes it a lot harder for cyber criminals to do their jobs.
+
+-----
 
 ##### Essay 3
 
@@ -41,6 +47,8 @@ Sending spam emails might be one possible reason for hijackers to create botnets
 
 Cyber criminals might want to create botnets so they can sell them to other cyber criminals. The cyber criminal who buys a botnet may perform its own cyber crimes with it. They can for example steal their victims' sensitive information and perform other crimes.
 
+-----
+
 ##### Essay 4
 
 *"Traditionally, routers do not inspect networks packets above transport layer. However, in deep packet inspection a router studies application layer payloads, and makes decisions based on the available information. Write a short essay (250 words) describing at least 2 different scenarios where a deep packet inspection can be used."*
@@ -52,6 +60,8 @@ It's possible to use deep package inspection as an intrusion detection system. I
 Because the deep package inspection is mainly used for filtering it may be used also to prioritise incoming requests. Routers can for example assign priority levels to incoming requests, so the requests with highest priority are on the top of the pile.
 
 Although the deep packet inspection is useful, it contains some downsides like that the network performance may decrease. It also doesn't provide any ultimate protection against threats so other security protections are needed.
+
+-----
 
 ##### Essay 5
 
