@@ -1,3 +1,8 @@
+<!---
+<title>Cyber Security Base school work</title>
+<description>Essays written for Cyber Security Base Mooc course</description>
+<author>Tapio Salonen</author>
+--->
 #### These essays are school work for the course Cyber Security Base
 
 [Cyber Security Base](https://cybersecuritybase.mooc.fi/)
