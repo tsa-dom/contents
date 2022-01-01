@@ -7,6 +7,7 @@ mkdir config
 
 cd config
 echo "[]" > blog.json
+echo "[]" > pages.json
 cd ..
 
 for file in ./articles/*
@@ -91,7 +92,7 @@ EOF
   fileName="$(echo $file | grep -o -P '(?<=./articles/).*(?=.md)')"
   commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file")
 
-  node dump.js "$fileName" "$title" "$description" "$keywords" "$author" "$commit"
+  node dump.js "blog" "$fileName" "$title" "$description" "$keywords" "$author" "$commit"
 done
 
 # Yeah I know, this is copy paste but I see this as a technical debt.
@@ -162,4 +163,9 @@ EOF
   cd html
   echo "$start$html$end" > $name
   cd ..
+
+  fileName="$(echo $file | grep -o -P '(?<=./pages/).*(?=.md)')"
+  commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file")
+
+  node dump.js "pages" "$fileName" "$title" "$description" "$keywords" "$author" "$commit"
 done
