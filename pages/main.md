@@ -1,8 +1,8 @@
 <!---
 <title>Blog platform hosted by Github Pages</title>
 <description>This website is made for learning purposes. It's my opportunity to show what I've learned and an opportunity for you to learn from me.</description>
-<name>Platform</name>
-<group>main</group>
+<name></name>
+<group></group>
 --->
 #### Blog platform hosted by Github Pages
 
