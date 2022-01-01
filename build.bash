@@ -92,7 +92,7 @@ EOF
   fileName="$(echo $file | grep -o -P '(?<=./articles/).*(?=.md)')"
   commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file")
 
-  node dump.js "blog" "$fileName" "$title" "$description" "$keywords" "$author" "$commit"
+  node dump.js "blog" "$fileName" "$title" "$description" "$commit" "$keywords" "$author"
 done
 
 # Yeah I know, this is copy paste but I see this as a technical debt.
@@ -166,6 +166,7 @@ EOF
 
   fileName="$(echo $file | grep -o -P '(?<=./pages/).*(?=.md)')"
   commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file")
+  group="$(echo $headers | grep -o -P '(?<=<group>).*(?=</group>)')"
 
-  node dump.js "pages" "$fileName" "$title" "$description" "$keywords" "$author" "$commit"
+  node dump.js "pages" "$fileName" "$title" "$description" "$commit" "$group"
 done
