@@ -90,7 +90,6 @@ EOF
   cd ..
 
   fileName="$(echo $file | grep -o -P '(?<=./articles/).*(?=.md)')"
-  #commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file")
 
   node dump.js "blog" "$fileName" "$title" "$description" "$file" "$keywords" "$author"
 done
@@ -165,10 +164,8 @@ EOF
   cd ..
 
   fileName="$(echo $file | grep -o -P '(?<=./pages/).*(?=.md)')"
-  #commit=$(curl -s "https://api.github.com/repos/tsa-dom/contents/commits?path=$file")
   group="$(echo $headers | grep -o -P '(?<=<group>).*(?=</group>)')"
+  name="$(echo $headers | grep -o -P '(?<=<name>).*(?=</name>)')"
 
-  #echo $group
-
-  node dump.js "pages" "$fileName" "$title" "$description" "$file" "$group"
+  node dump.js "pages" "$fileName" "$title" "$description" "$file" "$name" "$group"
 done

@@ -33,11 +33,10 @@ const createFiles = async () => {
     }
     fs.writeFile('./config/blog.json', JSON.stringify(Object(blog).concat(post)), () => {})
   } else if (process.argv[2] === "pages") {
-    const group = process.argv[7].split('.')
     const page = {
       group: {
-        name: group[0],
-        child: group[1] ? group[1].replaceAll('-', ' ') : null,
+        name: process.argv[7],
+        children: process.argv[8].split(',')
       },
       ...body
     }
