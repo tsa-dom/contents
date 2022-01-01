@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm install
       - run: bash build.bash
+        env:
+          CI: true
+          API_TOKEN: ${{ secrets.API_TOKEN }}
       - uses: EndBug/add-and-commit@v7
         with:
           author_name: Tapio Salonen
