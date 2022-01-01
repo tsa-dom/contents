@@ -19,7 +19,10 @@ const post = {
   ...body
 }
 const page = {
-  group: process.argv[7].replaceAll('-', ' '),
+  group: {
+    name: process.argv[7].split('.')[0],
+    child: process.argv[7].split('.')[1].replaceAll('-', ' '),
+  },
   ...body
 }
 
