@@ -42,7 +42,8 @@ const createFiles = async () => {
       if (group === "") return
       const file = {
         file: process.argv[3],
-        title: process.argv[7]
+        title: process.argv[7],
+        priority: Number(process.argv[9])
       }
       const page = {
         group: process.argv[8],

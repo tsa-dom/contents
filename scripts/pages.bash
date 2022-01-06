@@ -70,6 +70,7 @@ EOF
   
   group="$(echo $headers | grep -o -P '(?<=<group>).*(?=</group>)')"
   name="$(echo $headers | grep -o -P '(?<=<name>).*(?=</name>)')"
+  priority="$(echo $headers | grep -o -P '(?<=<name>).*(?=</name>)')"
 
-  node dump.js "pages" "$fileName" "$title" "$description" "$file" "$name" "$group"
+  node dump.js "pages" "$fileName" "$title" "$description" "$file" "$name" "$group" "$priority"
 done

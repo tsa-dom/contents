@@ -3,6 +3,7 @@
 <description>This website is made for learning purposes. It's my opportunity to show what I've learned and an opportunity for you to learn from me.</description>
 <name>Introduction</name>
 <group>home</group>
+<priority>1</priority>
 --->
 #### Blog platform hosted by Github Pages
 

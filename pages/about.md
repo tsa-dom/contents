@@ -3,6 +3,7 @@
 <description>Hi, I'm Tapio Salonen! I'm currently studying Computer Science at the University of Helsinki.</description>
 <name>About me</name>
 <group>home</group>
+<priority>2</priority>
 --->
 #### Hi, I'm Tapio Salonen!
 
