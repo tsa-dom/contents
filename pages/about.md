@@ -2,7 +2,7 @@
 <title>All about me and my interests</title>
 <description>Hi, I'm Tapio Salonen! I'm currently studying Computer Science at the University of Helsinki.</description>
 <name>About me</name>
-<group>about</group>
+<group>home</group>
 --->
 #### Hi, I'm Tapio Salonen!
 
