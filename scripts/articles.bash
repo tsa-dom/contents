@@ -90,6 +90,8 @@ EOF
           margin: auto;
           max-width: 700px;
           font-size: 20px;
+          max-height: 80vh;
+          overflow: scroll;
         }
         body {
           margin: 0;
