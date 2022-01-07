@@ -8,5 +8,5 @@ try {
   const html = marked.parse(data)
   console.log(html)
 } catch (err) {
-  console.log(err)
+  console.log("BUILD SCRIPTS FAILED TO CREATE THIS PAGE")
 }
