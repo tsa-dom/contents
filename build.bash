@@ -13,3 +13,4 @@ cd ..
 
 ./scripts/articles.bash
 ./scripts/pages.bash
+node files.js
