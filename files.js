@@ -18,6 +18,8 @@ const generateBlogContainer = () => {
 
 const blogContainer = generateBlogContainer()
 
+// ALWAYS pathSegmentsToKeep = 0 OR WEBSITE STOPS FUNCTIONING CORRECTLY
+// INFINITE LOOP
 const indexFile = `
 <!DOCTYPE html>
 
@@ -53,7 +55,7 @@ const indexFile = `
       // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
       // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
       // Otherwise, leave pathSegmentsToKeep as 0.
-      var pathSegmentsToKeep = 1;
+      var pathSegmentsToKeep = 0;
 
       var l = window.location;
       l.replace(
