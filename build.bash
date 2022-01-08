@@ -1,3 +1,5 @@
+cp -r ./config ./tmp
+
 rm -rf blog
 rm -rf html
 rm -rf config
@@ -14,3 +16,5 @@ cd ..
 ./scripts/articles.bash
 ./scripts/pages.bash
 node files.js
+
+rm -rf tmp
