@@ -69,17 +69,12 @@ EOF
       <div id="container">
         $generated
       </div>
-  
-      <div id="footer">
-        <img id="footer-img" src="https://raw.githubusercontent.com/tsa-dom/contents/main/images/noscriptnotification.png"> </img>
-      </div>
       <style>
         #container {
           margin: auto;
           max-width: 700px;
           font-size: 20px;
-          max-height: 80vh;
-          overflow: auto;
+          margin-top: 30px;
         }
         body {
           margin: 0;
@@ -100,9 +95,6 @@ EOF
         }
         .menu-link:hover {
           color: grey !important
-        }
-        #footer-img {
-          width: 100%;
         }
       </style>
     </noscript>

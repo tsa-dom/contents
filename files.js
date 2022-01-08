@@ -35,18 +35,12 @@ const indexFile = `
       <div id="container">
         ${blogContainer}
       </div>
-  
-      <div id="footer">
-        <img id="footer-img" src="https://raw.githubusercontent.com/tsa-dom/contents/main/images/noscriptnotification.png"> </img>
-      </div>
       <style>
         #container {
           margin: auto;
           max-width: 700px;
-          font-size: 30px;
+          font-size: 20px;
           margin-top: 30px;
-          max-height: 75vh;
-          overflow: auto;
         }
         body {
           margin: 0;
@@ -67,17 +61,6 @@ const indexFile = `
         }
         .menu-link:hover {
           color: grey !important
-        }
-        #footer {
-          bottom: 0;
-          position: absolute;
-          font-size: 30px;
-          margin: 20px;
-          color: red;
-          font-weight: bold;
-        }
-        #footer-img {
-          width: 100%;
         }
       </style>
     </noscript>
