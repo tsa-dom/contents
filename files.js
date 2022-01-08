@@ -4,6 +4,7 @@ const blog = require('./config/blog.json')
 const generateBlogContainer = () => {
   let html = ''
   for (post of blog) {
+    if (post.file.includes('test')) continue
     html = html + `
       <div>
         <strong>${post.title}</strong>
