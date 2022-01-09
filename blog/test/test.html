@@ -1,15 +1,17 @@
-
 <!DOCTYPE html>
-
 <html>
   <head>
     <meta charset="utf-8">
-    <title>All blog posts</title>
+    <title>This is something very interesting</title>
     <meta
       name="description"
-      content="Find you answers to your questions here"
+      content="Lets try if the script can access this"
       data-rh="true"
     />
+    <meta
+      name="keywords"
+      content="Test"
+    >
     <meta
       name="author"
       content="Tapio Salonen"
@@ -33,7 +35,7 @@
       // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
       // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
       // Otherwise, leave pathSegmentsToKeep as 0.
-      var pathSegmentsToKeep = 0;
+      var pathSegmentsToKeep = 1;
 
       var l = window.location;
       l.replace(
@@ -54,7 +56,20 @@
         <a class="menu-link" href="https://tsa-dom.github.io/pages/contributors">Contributors</a>
       </div>
       <div id="container">
-        
+        <h3 id="this-is-test-article">This is test article</h3>
+<p>Lets try some jsx</p>
+<pre><code class="language-jsx">import React from &#39;react&#39;
+
+const App = () =&gt; {
+  
+  return (
+    &lt;div&gt;This is test component&lt;/div&gt;
+  )
+}
+
+export default App
+</code></pre>
+<h3 id="test-ends">Test ends</h3>
       </div>
       <style>
         #container {
