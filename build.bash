@@ -11,6 +11,7 @@ cd config
 echo "[]" > blog.json
 echo "[]" > pages.json
 echo "{}" > groups.json
+echo "{}" > resources.json
 cd ..
 
 ./scripts/articles.bash
