@@ -7,15 +7,6 @@
 --->
 #### Hi, I'm Tapio Salonen!
 
-I'm currently studying Computer Science at the University of Helsinki. My passion is to learn constantly and it's one of my main reasons why I started this blog. 
+I'm Computer Science student at the University of Helsinki which passion is especially Agile Software Development.
 
-My interests are:
-* Full Stack development
-* Cyber Security
-* Data Structures and Algorithms
-* DevOps
-* And much more!
-
-If you want to contact me, you can do it by email:
-
-contacts.tapio@pm.me
+The best way to learn new thigns is to teach the others. I'm eager to learn new things constantly and that's one of the reasons why I set up this blog platform. Topics which I'm going to cover through posts are related to my interests which are for example Full Stack development, programming techiques, devops and much more.
