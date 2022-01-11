@@ -19,12 +19,12 @@ The basic structure of my app was that a blog post contents are stored to [this]
 ```jsx
 // I decided to use HTML like tags to determine all necessary meta information.
 // Build scripts which are executed by Github Actions creates HTML pages using this information.
-<!---
+</!---
 <title>React app SEO for Github pages</title>
 <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description>
 <keywords>SEO, React</keywords>
 <author>Tapio Salonen</author>
---->
+---/>
 // The blog post content...
 ```
 
