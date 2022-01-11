@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React</keywords> <author>Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title>
+    <meta
+      name="description"
+      content="Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React</keywords> <author>Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages."
+      data-rh="true"
+    />
+    <meta
+      name="keywords"
+      content="SEO, React</keywords> <author>Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React"
+    >
+    <meta
+      name="author"
+      content="Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React</keywords> <author>Tapio Salonen"
+    >
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment,
+      // e.g. https://www.foo.tld/one/two?a=b&c=d#qwe, becomes
+      // https://www.foo.tld/?/one/two&a=b~and~c=d#qwe
+      // Note: this 404.html file must be at least 512 bytes for it to work
+      // with Internet Explorer (it is currently > 512 bytes)
+
+      // If you're creating a Project Pages site and NOT using a custom domain,
+      // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
+      // This way the code will only replace the route part of the path, and not
+      // the real directory in which the app resides, for example:
+      // https://username.github.io/repo-name/one/two?a=b&c=d#qwe becomes
+      // https://username.github.io/repo-name/?/one/two&a=b~and~c=d#qwe
+      // Otherwise, leave pathSegmentsToKeep as 0.
+      var pathSegmentsToKeep = 1;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div id="menu-nav">
+        <a class="menu-link" href="https://tsa-dom.github.io">Home</a>
+        <a class="menu-link" href="https://tsa-dom.github.io/blog">Blog</a>
+        <a class="menu-link" href="https://tsa-dom.github.io/pages/contributors">Contributors</a>
+      </div>
+      <div id="container">
+        <h4 id="react-app-seo-for-github-pages">React app SEO for Github pages</h4>
+<p>Pretty soon when I decided to create my own blog platform using React there encountered a problem. How I can be sure that my app is SEO friendly and performs well in search engine results. Because React apps are single page applications (SPA) therefore they suffer for poor SEO performance. This is because React apps works completely with pure JavaScript by default and search engine crawlers are well known of their weaknesses to crawl websites which contains a lot of JavaScript code. There are many different solutions to overcome these issues and I am going to cover ones which works for React apps hosted in Github Pages.</p>
+<p>If you host your own React app in Github Pages, then you don&#39;t have backend server for your app by default and therefore you are not able to use SEO technics like server side rendering to your own application. This was the case for my own app so I needed to find solution which works for me. I decided to create multipage page application (MPA) alongside of my React SPA app. My implementation was to create HTML pages for every existing url path and then when the pages were loaded on client side, then a user were redirected to the actual React app. I used content of <a href="https://github.com/rafgraph/spa-github-pages">this</a> repository to redirect users to the actual React app.</p>
+<h5 id="titles-and-meta-tags">Titles and meta tags</h5>
+<p>There arose one problem in my app. How each of the pages of my app are shown on search engine results. According to <a href="https://totheweb.com/learning_center/tool-test-google-title-meta-description-lengths/">this</a> website, not very well and the reason for that was the JavaScript. Apparently titles and other meta information like descriptions of the page are gotten from the head tag of the HTML page and not by executing JavaScript and creating necessary tags with it. </p>
+<p>The basic structure of my app was that a blog post contents are stored to <a href="https://github.com/tsa-dom/contents">this</a> Github repository as a markdown files and then the React app uses those files to render pages for users. On the top of each markdown file I added a comment section where I stored all necessary metainformation.</p>
+<pre><code class="language-jsx">// I decided to use HTML like tags to determine all necessary meta information.
+// Build scripts which are executed by Github Actions creates HTML pages using this information.
+
+// The blog post content...
+</code></pre>
+<p>I also added build scripts which extracts the comment section of each markdown file and then generates HTML pages with titles and necessary meta information on the basis of them. I automated HTML page building with Github Actions and if there are any changes in the repository then those files are generated again. After the files are generated then they are automatically transferred to <a href="https://github.com/tsa-dom/tsa-dom.github.io/tree/gh-pages">here</a>. Now titles and descriptions should be shown properly on search engine results. I also added npm library <a href="https://www.npmjs.com/package/react-helmet-async">react-helmet-async</a> for changing meta information when the app is running and the url path changes.</p>
+<h5 id="noscript-version">Noscript version</h5>
+<p>Even though I created MPA on the top of SPA it&#39;s not enough. Search engine crawlers aren&#39;t great for indexing websites that rely on JavaScript especially if the website is not popular. That is the reason why I created a noscript version of the app. For getting benefits of the noscript version it should contain the same core functionality that the actual app contains. I also automated noscript version creation using especially <a href="https://www.npmjs.com/package/marked">marked</a>-library for generating HTML within the build process.</p>
+      </div>
+      <style>
+        #container {
+          margin: auto;
+          max-width: 700px;
+          font-size: 20px;
+          margin-top: 30px;
+        }
+        body {
+          margin: 0;
+          font-family: sans-serif;
+        }
+        #menu-nav {
+          width: 100%;
+          min-height: 50px;
+          background-color: black;
+          color: white;
+          text-align: center;
+          font-size: 30px;
+          padding-top: 10px;
+        }
+        .menu-link {
+          padding: 20px;
+          color: white !important;
+        }
+        .menu-link:hover {
+          color: grey !important
+        }
+      </style>
+    </noscript>
+  </body>
+</html>
