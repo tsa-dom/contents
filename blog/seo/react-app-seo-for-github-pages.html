@@ -2,19 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React</keywords> <author>Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title>
+    <title>React app SEO for Github pages</title>
     <meta
       name="description"
-      content="Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React</keywords> <author>Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages."
+      content="Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages."
       data-rh="true"
     />
     <meta
       name="keywords"
-      content="SEO, React</keywords> <author>Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React"
+      content="SEO, React"
     >
     <meta
       name="author"
-      content="Tapio Salonen</author> ---> <!--- <title>React app SEO for Github pages</title> <description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description> <keywords>SEO, React</keywords> <author>Tapio Salonen"
+      content="Tapio Salonen"
     >
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
@@ -64,7 +64,12 @@
 <p>The basic structure of my app was that a blog post contents are stored to <a href="https://github.com/tsa-dom/contents">this</a> Github repository as a markdown files and then the React app uses those files to render pages for users. On the top of each markdown file I added a comment section where I stored all necessary metainformation.</p>
 <pre><code class="language-jsx">// I decided to use HTML like tags to determine all necessary meta information.
 // Build scripts which are executed by Github Actions creates HTML pages using this information.
-
+&lt;/!---
+&lt;title&gt;React app SEO for Github pages&lt;/title&gt;
+&lt;description&gt;Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.&lt;/description&gt;
+&lt;keywords&gt;SEO, React&lt;/keywords&gt;
+&lt;author&gt;Tapio Salonen&lt;/author&gt;
+---/&gt;
 // The blog post content...
 </code></pre>
 <p>I also added build scripts which extracts the comment section of each markdown file and then generates HTML pages with titles and necessary meta information on the basis of them. I automated HTML page building with Github Actions and if there are any changes in the repository then those files are generated again. After the files are generated then they are automatically transferred to <a href="https://github.com/tsa-dom/tsa-dom.github.io/tree/gh-pages">here</a>. Now titles and descriptions should be shown properly on search engine results. I also added npm library <a href="https://www.npmjs.com/package/react-helmet-async">react-helmet-async</a> for changing meta information when the app is running and the url path changes.</p>
