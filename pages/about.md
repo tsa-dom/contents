@@ -7,6 +7,6 @@
 --->
 #### Hi, I'm Tapio Salonen!
 
-I'm Computer Science student at the University of Helsinki which passion is especially Agile Software Development.
+I'm a Computer Science student at the University of Helsinki which passion is especially Agile Software Development.
 
-The best way to learn new thigns is to teach the others. I'm eager to learn new things constantly and that's one of the reasons why I set up this blog platform. Topics which I'm going to cover through posts are related to my interests which are for example Full Stack development, programming techiques, devops and much more.
+The best way to learn new things is to teach others. I'm eager to learn new things constantly and that's one of the reasons why I set up this blog platform. Topics that I'm going to cover through posts are related to my interests which are for example Full Stack development, programming techniques, DevOps, and much mor
