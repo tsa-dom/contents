@@ -21,7 +21,7 @@ The basic structure of my app was that blog post contents are stored to [this](h
 // Build scripts which are executed by Github Actions creates HTML pages using this information.
 </!---
 <title>React app SEO for Github pages</title>
-<description>Here we are going to discuss how you can optimize SEO for you React app which is hosted in Github Pages.</description>
+<description>Here we are going to discuss how you can optimize SEO for your React app which is hosted in Github Pages.</description>
 <keywords>SEO, React</keywords>
 <author>Tapio Salonen</author>
 ---/>
