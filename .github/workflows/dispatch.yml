@@ -9,17 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Push blog to another repository
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: 'blog'
-          destination-github-username: 'tsa-dom'
-          destination-repository-name: 'tsa-dom.github.io'
-          user-email: tsa.dom@pm.me
-          target-branch: gh-pages
-          target-directory: 'blog'
       - name: Push pages to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
