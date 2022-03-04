@@ -19,3 +19,4 @@ cd ..
 node files.js
 
 rm -rf tmp
+mv ./blog ./html/.
