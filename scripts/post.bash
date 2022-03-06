@@ -23,6 +23,12 @@ html=$(cat << EOF
       name="author"
       content="$author"
     >
+    <link rel="icon" href="%PUBLIC_URL%/../favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="google-site-verification" content="sGo3V_g8qjmhW-tRL3VFR4q_sFXWointhBROBAAZpNw" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/../logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/../manifest.json" />
 EOF
 )
 echo $file
@@ -39,6 +45,7 @@ end=$(cat << EOF
 
   </head>
   <body>
+    <div id="root"></div>
     <noscript>
       <div id="menu-nav">
         <a class="menu-link" href="https://tsa-dom.github.io">Home</a>
