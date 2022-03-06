@@ -18,8 +18,8 @@ jobs:
           destination-github-username: 'tsa-dom'
           destination-repository-name: 'tsa-dom.github.io'
           user-email: tsa.dom@pm.me
-          target-branch: gh-pages
-          target-directory: 'blog'
+          target-branch: main
+          target-directory: 'public/blog'
       - name: Push pages to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
@@ -29,5 +29,5 @@ jobs:
           destination-github-username: 'tsa-dom'
           destination-repository-name: 'tsa-dom.github.io'
           user-email: tsa.dom@pm.me
-          target-branch: gh-pages
-          target-directory: 'pages'
+          target-branch: main
+          target-directory: 'public/pages'
