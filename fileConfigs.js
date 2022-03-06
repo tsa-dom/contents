@@ -1,3 +1,5 @@
+// This script generates paths for all hosted files
+
 const dirTree = require("directory-tree")
 const blogTree = dirTree("./blog")
 const pagesTree = dirTree("./html")
@@ -10,7 +12,7 @@ const getPaths = (dir) => {
       getPaths(child)
     }
   } else {
-    const path = dir.path.split('html/')
+    const path = dir.path.split('.html')[0].split('html/')
     if (path.length - 1) {
       files.push(`pages/${path[1]}`)
     } else {
