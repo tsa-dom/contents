@@ -12,10 +12,12 @@ echo "[]" > blog.json
 echo "[]" > pages.json
 echo "{}" > groups.json
 echo "{}" > resources.json
+echo "[]" > files.json
 cd ..
 
 ./scripts/articles.bash
 ./scripts/pages.bash
 node files.js
+node fileConfigs.js
 
 rm -rf tmp
