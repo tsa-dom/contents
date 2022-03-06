@@ -10,11 +10,17 @@ const getPaths = (dir) => {
       getPaths(child)
     }
   } else {
-    files.push(dir.path.split('.')[0])
+    const path = dir.path.split('html/')
+    if (path.length - 1) {
+      files.push(`pages/${path[1]}`)
+    } else {
+      files.push(path[0])
+    }
   }
 }
 
 getPaths(blogTree)
 getPaths(pagesTree)
+console.log(files)
 
 fs.writeFile('./config/files.json', JSON.stringify(files), () => {})
