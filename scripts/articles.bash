@@ -1,3 +1,4 @@
+# Iterating trough all blog posts
 for file in ./articles/*
 do
   if [[ -d $file ]]
@@ -8,7 +9,7 @@ do
     cd ..
     for dirFile in ./articles/$dirName/*
     do
-      bash ./scripts/post.bash $dirFile "blog" $dirName      
+      bash ./scripts/post.bash $dirFile "blog" $dirName
     done
   else
     bash ./scripts/post.bash $file "blog"
