@@ -1,77 +1,50 @@
+require('dotenv').config()
 const axios = require('axios')
 const blog = require('../config/blog.json')
 const pages = require('../config/pages.json')
 const groups = Object(require('../config/groups.json'))
 const resources = Object(require('../config/resources.json'))
 const fs = require('fs').promises
-require('dotenv').config()
+
+const API_URL = 'https://api.github.com/repos/tsa-dom/contents/commits?path='
+const HEADERS = { headers: { 'Authorization': `token ${process.env.API_TOKEN}` } }
 
 // Users GitHub Api to fetch commits related to a specific file path
-const getCommit = async (path) => {
-  const res = await axios.get(`https://api.github.com/repos/tsa-dom/contents/commits?path=${path}`, {
-    headers: {
-      'Authorization': `token ${process.env.API_TOKEN}`
-    }
-  })
-  return res.data
+const getCommits = async (path) => (await axios.get(`${API_URL}${path}`, HEADERS)).data
+
+const dump = async (data, fields) => {
+  const commits = await getCommits(data.path)
+  const sorted = commits.map(d => d.commit.author).sort((a, b) => new Date(b.date) - new Date(a.date))  
+  data['created'] = new Date(sorted[sorted.length - 1].date).toISOString()
+  data['modified'] = new Date(sorted[0].date).toISOString()
+
+  const values = {}
+  fields.map(f => values[f] = data[f])
+  return values
 }
 
 // Dumps pages with specific data to repo
-const dumpPages = async (file, data) => {
-  const { title, description, group, path, priority, name } = data
-  if (!group) return
-  const commits = await getCommit(path)
-  const sorted = commits.map(d => d.commit.author).sort((a, b) => new Date(b.date) - new Date(a.date))
-
-  const fileConfig = {
-    file,
-    title: name,
-    priority: Number(priority)
-  }
-  const page = {
-    file,
-    title,
-    description,
-    modified: new Date(sorted[0].date).toISOString(),
-    created: new Date(sorted[sorted.length - 1].date).toISOString(),
-    group
-  }
+const dumpPages = async (data) => {
+  if (!data.group) return
+  const page = await dump(data, ['title', 'description', 'file', 'group', 'created', 'modified'])
   await fs.writeFile('./config/pages.json', JSON.stringify(Object(pages).concat(page)))
-  if (groups[group]) {
-    groups[group].push(fileConfig)
-  } else {
-    groups[group] = [{ ...fileConfig }]
-  }
+
+  const { name: title, priority, group, file } = data
+  const fileConfig = { file, title, priority: Number(priority) }
+  groups[group] ? groups[group].push(fileConfig) : groups[group] = [{ ...fileConfig }]
   await fs.writeFile('./config/groups.json', JSON.stringify(groups))
 }
 
 // Dumps blog posts with specific data to repo
-const dumpBlog = async (file, data) => {
-  const { title, keywords, author, description, path } = data
-  const commits = await getCommit(path)
-  const sorted = commits.map(d => d.commit.author).sort((a, b) => new Date(b.date) - new Date(a.date))
+const dumpBlog = async (data) => {
+  const page = await dump(data, ['title', 'description', 'file', 'author', 'keywords', 'created', 'modified'])
+  await fs.writeFile('./config/blog.json', JSON.stringify(Object(blog).concat(page)))
   
-  const post = {
-    keywords,
-    author,
-    file,
-    title,
-    description,
-    modified: new Date(sorted[0].date).toISOString(),
-    created: new Date(sorted[sorted.length - 1].date).toISOString()
-  }
-  await fs.writeFile('./config/blog.json', JSON.stringify(Object(blog).concat(post)))
+  const { title, file } = data
   if (file.includes("/")) {
     const group = file.split("/")[0]
-    const resource = {
-      file,
-      title
-    }
-    if (resources[group]) {
-      resources[group].push(resource)
-    } else {
-      resources[group] = [{ ...resource }]
-    }
+    const resource = { file, title }
+    resources[group] ? resources[group].push(resource) : resources[group] = [{ ...resource }]
   }
   await fs.writeFile('./config/resources.json', JSON.stringify(resources))
 }

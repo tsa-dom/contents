@@ -20,13 +20,13 @@ echo "{}" > resources.json
 echo "[]" > files.json
 cd ..
 
-# Iteration trough all pages
+# Iterationg through all pages
 for file in ./pages/*
 do
   eval node scripts/pages.js $file
 done
 
-# Iterating trough all blog posts
+# Iterating through all blog posts
 for file in ./articles/*
 do
   if [[ -d $file ]]

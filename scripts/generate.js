@@ -25,7 +25,7 @@ const mdToHtml = async (path) => {
         })
         return `${itemsHtml}${html}`
       } return html
-    } else html
+    } else return html
   } catch (err) { return undefined }
 }
 

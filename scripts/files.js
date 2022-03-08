@@ -3,8 +3,8 @@ const blog = require('../config/blog.json')
 
 // Generates an index file used to list blogs
 const writeBlogIndexFile = async () => {
-  const head = await fs.readFile('./assets/blog/index-head.txt', 'utf-8')
-  const footer = await fs.readFile('./assets/blog/index-footer.txt', 'utf-8')
+  const head = await fs.readFile('./assets/articles/index-head.txt', 'utf-8')
+  const footer = await fs.readFile('./assets/articles/index-footer.txt', 'utf-8')
   let data = ''
   for (post of blog) {
     if (post.file.includes('test')) continue

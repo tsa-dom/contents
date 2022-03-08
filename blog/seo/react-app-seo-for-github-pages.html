@@ -3,28 +3,25 @@
 <html>
   <head>
     <meta charset="utf-8">
-
-    <title>React app SEO for Github pages</title>
-    <meta
-      name="description"
-      content="Here we are going to discuss how you can optimize SEO for your React app which is hosted in Github Pages."
-      data-rh="true"
-    />
-    <meta
-      name="keywords"
-      content="SEO, React"
-    >
-    <meta
-      name="author"
-      content="Tapio Salonen"
-    >
+		<title>React app SEO for Github pages</title>
+		<meta
+			name="description"
+			content="Here we are going to discuss how you can optimize SEO for your React app which is hosted in Github Pages."
+		>
+		<meta
+			name="author"
+			content="Tapio Salonen"
+		>
+		<meta
+			name="keywords"
+			content="SEO, React"
+		>
     <link rel="icon" href="%PUBLIC_URL%/../favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="google-site-verification" content="sGo3V_g8qjmhW-tRL3VFR4q_sFXWointhBROBAAZpNw" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/../logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/../manifest.json" />
-  
   </head>
   <body>
     <div id="root"></div>
@@ -35,7 +32,26 @@
         <a class="menu-link" href="https://tsa-dom.github.io/pages/contributors">Contributors</a>
       </div>
       <div id="container">
-undefined      </div>
+<h3 id="react-app-seo-for-github-pages">React app SEO for Github pages</h3>
+<p>Pretty soon when I decided to create my blog platform using React there encountered a problem. How I can be sure that my app is SEO friendly and performs well in search engine results. Because React apps are single-page applications (SPA) therefore they suffer from poor SEO performance. This is because React apps work completely with pure JavaScript by default and search engine crawlers are well known for their weaknesses to crawl websites that contain a lot of JavaScript code. There are many different solutions to overcome these issues and I am going to cover ones that work for React apps hosted in Github Pages.</p>
+<p>If you host your own React app in Github Pages, then you don&#39;t have a backend server for your app by default and therefore you are not able to use SEO technics like server-side rendering to your application. This was the case for my app so I needed to find a solution that works for me. I decided to create a multipage page application (MPA) alongside my React SPA app. My implementation was to create HTML pages for every existing URL path and when the pages were loaded on the client-side, then a user was redirected to the actual React app. I used the content of <a href="https://github.com/rafgraph/spa-github-pages">this</a> repository to redirect users to the actual React app.</p>
+<h4 id="titles-and-meta-tags">Titles and meta tags</h4>
+<p>There arose one problem in my app. How each of the pages of my app is shown on search engine results. According to <a href="https://totheweb.com/learning_center/tool-test-google-title-meta-description-lengths/">this</a> website, not very well and the reason for that was the JavaScript. Titles and other meta information like descriptions of the page are gotten from the head tag of the HTML page and not by executing JavaScript and creating necessary tags with it. </p>
+<p>The basic structure of my app was that blog post contents are stored to <a href="https://github.com/tsa-dom/contents">this</a> Github repository as markdown files and then the React app uses those files to render pages for users. On the top of each markdown file, I added a comment section where I stored all necessary metainformation.</p>
+<pre><code class="language-jsx">// I decided to use HTML like tags to determine all necessary meta information.
+// Build scripts which are executed by Github Actions creates HTML pages using this information.
+&lt;/!---
+&lt;title&gt;React app SEO for Github pages&lt;/title&gt;
+&lt;description&gt;Here we are going to discuss how you can optimize SEO for your React app which is hosted in Github Pages.&lt;/description&gt;
+&lt;keywords&gt;SEO, React&lt;/keywords&gt;
+&lt;author&gt;Tapio Salonen&lt;/author&gt;
+---/&gt;
+// The blog post content...
+</code></pre>
+<p>I also added build scripts that extract the comment section of each markdown file and then generate HTML pages with titles and necessary meta-information based on them. I automated HTML page building with Github Actions and if there are any changes in the repository then those files are generated again. After the files are generated then they are automatically transferred to <a href="https://github.com/tsa-dom/tsa-dom.github.io/tree/gh-pages">here</a>. Now titles and descriptions should be shown properly on search engine results. I also added npm library <a href="https://www.npmjs.com/package/react-helmet-async">react-helmet-async</a> for changing meta information when the app is running and the URL path changes.</p>
+<h4 id="noscript-version">Noscript version</h4>
+<p>Even though I created MPA on top of SPA it&#39;s not enough. Search engine crawlers aren&#39;t great for indexing websites that rely on JavaScript especially if the website is not popular. That is the reason why I created a noscript version of the app. For getting benefits of the noscript version it should contain the same core functionality that the actual app contains. I also automated noscript version creation using especially <a href="https://www.npmjs.com/package/marked">marked</a>-library for generating HTML within the build process.</p>
+      </div>
       <style>
         #container {
           margin: auto;

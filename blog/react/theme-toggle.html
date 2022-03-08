@@ -3,28 +3,25 @@
 <html>
   <head>
     <meta charset="utf-8">
-
-    <title>React app dark and light theme toggle</title>
-    <meta
-      name="description"
-      content="In this blog post, I'm going through one way to implement dark and light theme toggle to your React app."
-      data-rh="true"
-    />
-    <meta
-      name="keywords"
-      content="React, CSS"
-    >
-    <meta
-      name="author"
-      content="Tapio Salonen"
-    >
+		<title>React app dark and light theme toggle</title>
+		<meta
+			name="description"
+			content="In this blog post, I'm going through one way to implement dark and light theme toggle to your React app."
+		>
+		<meta
+			name="author"
+			content="Tapio Salonen"
+		>
+		<meta
+			name="keywords"
+			content="React, CSS"
+		>
     <link rel="icon" href="%PUBLIC_URL%/../favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta name="google-site-verification" content="sGo3V_g8qjmhW-tRL3VFR4q_sFXWointhBROBAAZpNw" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/../logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/../manifest.json" />
-  
   </head>
   <body>
     <div id="root"></div>
@@ -35,7 +32,52 @@
         <a class="menu-link" href="https://tsa-dom.github.io/pages/contributors">Contributors</a>
       </div>
       <div id="container">
-undefined      </div>
+<h3 id="react-app-dark-and-light-theme-toggle">React app dark and light theme toggle.</h3>
+<p>You can find an example app from <a href="https://github.com/tsa-dom/example-apps/tree/main/react/darkmode-example">here</a>.</p>
+<p>In this blog post, I&#39;m going through one way to implement dark and light theme toggle to your React app. I decided to use CSS variables to change styles. All style properties to each theme, I defined in a theme.js file like so</p>
+<pre><code class="language-jsx">export const themes = {
+  dark: [
+    { var: &#39;--background-color&#39;, value: &#39;rgb(40, 44, 52)&#39; },
+    { var: &#39;--text-color&#39;, value: &#39;white&#39; },
+    { var: &#39;--app-link-color&#39;, value: &#39;rgb(97, 218, 251)&#39; }
+  ],
+  light: [
+    { var: &#39;--background-color&#39;, value: &#39;white&#39; },
+    { var: &#39;--text-color&#39;, value: &#39;black&#39; },
+    { var: &#39;--app-link-color&#39;, value: &#39;rgb(50, 178, 213)&#39; }
+  ]
+}
+</code></pre>
+<p>This approach makes it easier to iterate through all style properties and update them on one go. You only need to specify the theme as a function param.</p>
+<pre><code class="language-jsx">// This function switches all CSS variable values with the selected theme values.
+export const switchTheme = (themeName) =&gt; {
+  localStorage.setItem(&#39;app-theme&#39;, themeName)
+  themes[themeName].forEach(theme =&gt; {
+    document.documentElement.style.setProperty(theme.var, theme.value)
+  })
+}
+</code></pre>
+<p>Next, you need to define CSS variables. Those variables are manipulated on runtime when the theme changes. You need to specify all defined variables to style definitions inside CSS files.</p>
+<pre><code class="language-css">/* CSS-variable definitions */
+:root {
+  --background-color: rgb(40, 44, 52);
+  --text-color: white;
+  --app-link-color: rgb(97, 218, 251);
+}
+
+/* Styles that uses CSS variables are defined here */
+.App-header {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  ...
+}
+.App-link {
+  color: var(--app-link-color);
+}
+</code></pre>
+<p>You can also store the current theme to local storage so a client can use it further when visiting the page next time.</p>
+<p>This method is also reusable in other situations where you need conditional CSS rendering. You can hide specific elements in the DOM tree if a particular setting is activated.</p>
+      </div>
       <style>
         #container {
           margin: auto;
