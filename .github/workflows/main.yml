@@ -19,10 +19,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: npm install
-      - name: Add permissions
-        run: |
-          chmod a+x scripts/articles.bash
-          chmod a+x scripts/pages.bash
       - run: bash build.bash
         env:
           CI: true
