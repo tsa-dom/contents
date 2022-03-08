@@ -20,11 +20,32 @@ echo "{}" > resources.json
 echo "[]" > files.json
 cd ..
 
-# Running additional scripts
-./scripts/articles.bash
-./scripts/pages.bash
-node files.js
-node fileConfigs.js
+# Iteration trough all pages
+for file in ./pages/*
+do
+  eval node scripts/pages.js $file
+done
+
+# Iterating trough all blog posts
+for file in ./articles/*
+do
+  if [[ -d $file ]]
+  then
+    dirName="$(echo $file | grep -o -P '(?<=./articles/).*')"
+    cd blog
+    mkdir $dirName
+    cd ..
+    for dirFile in ./articles/$dirName/*
+    do
+      node scripts/pages.js $dirFile
+    done
+  else
+    node scripts/pages.js $file
+  fi
+done
+
+node scripts/files.js
+node scripts/fileConfigs.js
 
 # Deleting temp folder
 rm -rf tmp

@@ -23,6 +23,5 @@ const getPaths = (dir) => {
 
 getPaths(blogTree)
 getPaths(pagesTree)
-console.log(files)
 
 fs.writeFile('./config/files.json', JSON.stringify(files), () => {})
