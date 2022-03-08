@@ -18,14 +18,14 @@ const getCommit = async (path) => {
 
 // Dumps pages with specific data to repo
 const dumpPages = async (file, data) => {
-  const { title, description, group, path, priority } = data
+  const { title, description, group, path, priority, name } = data
   if (!group) return
   const commits = await getCommit(path)
   const sorted = commits.map(d => d.commit.author).sort((a, b) => new Date(b.date) - new Date(a.date))
 
   const fileConfig = {
     file,
-    title,
+    title: name,
     priority: Number(priority)
   }
   const page = {
