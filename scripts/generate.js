@@ -3,6 +3,7 @@ const { marked } = require('marked')
 const groups = require('../tmp/groups.json')
 const pages = require('../tmp/pages.json')
 
+// Markdown files are conferted to HTML using 'marked'
 const mdToHtml = async (path) => {
   try {
     let data = await fs.readFile(path, 'utf-8')

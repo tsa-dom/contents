@@ -6,6 +6,7 @@ const resources = Object(require('../config/resources.json'))
 const fs = require('fs').promises
 require('dotenv').config()
 
+// Users GitHub Api to fetch commits related to a specific file path
 const getCommit = async (path) => {
   const res = await axios.get(`https://api.github.com/repos/tsa-dom/contents/commits?path=${path}`, {
     headers: {
@@ -15,6 +16,7 @@ const getCommit = async (path) => {
   return res.data
 }
 
+// Dumps pages with specific data to repo
 const dumpPages = async (file, data) => {
   const { title, description, group, path, priority } = data
   if (!group) return
@@ -43,6 +45,7 @@ const dumpPages = async (file, data) => {
   await fs.writeFile('./config/groups.json', JSON.stringify(groups))
 }
 
+// Dumps blog posts with specific data to repo
 const dumpBlog = async (file, data) => {
   const { title, keywords, author, description, path } = data
   const commits = await getCommit(path)

@@ -1,6 +1,7 @@
 const fs = require('fs').promises
 const blog = require('../config/blog.json')
 
+// Generates an index file used to list blogs
 const writeBlogIndexFile = async () => {
   const head = await fs.readFile('./assets/blog/index-head.txt', 'utf-8')
   const footer = await fs.readFile('./assets/blog/index-footer.txt', 'utf-8')

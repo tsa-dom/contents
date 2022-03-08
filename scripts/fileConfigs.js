@@ -6,6 +6,7 @@ const pagesTree = dirTree("./html")
 const files = []
 const fs = require('fs')
 
+// Iterates trough dir tree and dumps file paths to config file
 const getPaths = (dir) => {
   if (dir.children) {
     for (child of dir.children) {
