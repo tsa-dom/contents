@@ -12,7 +12,7 @@ const getData = async () => {
   const title = getValue(head, 'title')
   const description = getValue(head, 'description')
   const group = getValue(head, 'group')
-  const name = getValue(head, 'value')
+  const name = getValue(head, 'name')
   const priority = getValue(head, 'priority')
   const author = getValue(head, 'author')
   const keywords = getValue(head, 'keywords')
