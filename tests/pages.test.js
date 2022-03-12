@@ -53,7 +53,11 @@ describe("Pages test", () => {
 
   it("correct html is generated from the content", async () => {
     await generateHtml('articles', 'blog')
-    expect(generatedHtml.replace(/\s\s+/g, ' ')).toEqual(writeCalls[0][1].replace(/\s\s+/g, ' '))
+    expect(writeCalls[0][0]).toEqual('./blog/test/test.html')
+    expect(writeCalls[0][1]).toContain('this works pretty well')
+    expect(writeCalls[0][1]).toContain('<meta name="viewport" content="width=device-width, initial-scale=1" />')
+    expect(writeCalls[0][1]).toContain('<a class="menu-link" href="https://tsa-dom.github.io/blog">Blog</a>')
+    expect(writeCalls[0][1]).toContain('#container {')
   })
 
 })
