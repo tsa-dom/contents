@@ -7,8 +7,7 @@ const pages = require('../tmp/pages.json')
 const mdToHtml = async (path) => {
   try {
     let data = await fs.readFile(path, 'utf-8')
-    const rx = new RegExp("<!---[\\d\\D]*?\--->")
-    while (data.includes('<!---')) data = data.replace(rx, '')
+    while (data.includes('<!---')) data = data.replace(/<!---[\d\D]*?--->/, '')
     const html = marked.parse(data)
     if (path.includes('./pages/')) {
       const file = path.split('./pages/')[1].split('.md')[0]
@@ -26,7 +25,7 @@ const mdToHtml = async (path) => {
         return `${itemsHtml}${html}`
       } return html
     } else return html
-  } catch (err) { return undefined }
+  } catch (err) { console.log(err); return undefined }
 }
 
 module.exports = { mdToHtml }

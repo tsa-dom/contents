@@ -3,6 +3,10 @@
     "axios": "^0.24.0",
     "directory-tree": "^3.2.2",
     "dotenv": "^10.0.0",
+    "jest": "^27.5.1",
     "marked": "^4.0.9"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }

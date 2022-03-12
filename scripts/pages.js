@@ -2,7 +2,7 @@ const { dumpPages, dumpBlog } = require('./dump')
 const { mdToHtml } = require('./generate')
 const fs = require('fs').promises
 const path = process.argv[2]
-console.log(path)
+const test = process.argv[3]
 
 const fields = ['title', 'description', 'group', 'name', 'priority', 'author', 'keywords']
 const meta = ['title', 'description', 'author', 'keywords']
@@ -41,5 +41,8 @@ const generateHtml = async (dir, target) => {
   else if (dir === 'pages') await dumpPages(data)
 }
 
-if (path.includes('./articles')) generateHtml('articles', 'blog')
+if (!path || test) undefined
+else if (path.includes('./articles')) generateHtml('articles', 'blog')
 else if (path.includes('./pages')) generateHtml('pages', 'html')
+
+module.exports = { getData, generateContent, generateHtml }
