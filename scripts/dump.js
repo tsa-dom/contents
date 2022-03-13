@@ -14,10 +14,26 @@ const getCommits = async (path) => (await axios.get(`${API_URL}${path}`, HEADERS
 
 const dump = async (data, fields) => {
   const commits = await getCommits(data.path)
-  const sorted = commits.map(d => d.commit.author).sort((a, b) => new Date(b.date) - new Date(a.date))  
+  const sorted = commits
+    .map(d => ({ 
+      date: d.commit.author.date,
+      user: d.committer.login,
+      avatar_url: d.committer.avatar_url
+    }))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
   data['created'] = new Date(sorted[sorted.length - 1].date).toISOString()
   data['modified'] = new Date(sorted[0].date).toISOString()
-
+  const committers = []
+  sorted.map(d => committers.find(c => c.user === d.user)
+    ? undefined
+    : d.user === 'web-flow' ? committers.push({
+      date: d.date,
+      user: 'tsa-dom',
+      avatar_url: 'https://avatars.githubusercontent.com/tsa-dom'
+    }) : committers.push(d)
+  )
+  data['committers'] = committers
+  
   const values = {}
   fields.map(f => values[f] = data[f])
   return values
@@ -37,7 +53,7 @@ const dumpPages = async (data) => {
 
 // Dumps blog posts with specific data to repo
 const dumpBlog = async (data) => {
-  const page = await dump(data, ['title', 'description', 'file', 'author', 'keywords', 'created', 'modified'])
+  const page = await dump(data, ['title', 'description', 'file', 'author', 'keywords', 'created', 'modified', 'committers'])
   await fs.writeFile('./config/blog.json', JSON.stringify(Object(blog).concat(page)))
   
   const { title, file } = data

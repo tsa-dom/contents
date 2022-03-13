@@ -3,6 +3,7 @@ const { mdToHtml } = require('./generate')
 const fs = require('fs').promises
 const path = process.argv[2]
 const test = process.argv[3]
+console.log(path)
 
 const fields = ['title', 'description', 'group', 'name', 'priority', 'author', 'keywords']
 const meta = ['title', 'description', 'author', 'keywords']
