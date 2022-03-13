@@ -24,7 +24,7 @@ const dump = async (data, fields) => {
   data['created'] = new Date(sorted[sorted.length - 1].date).toISOString()
   data['modified'] = new Date(sorted[0].date).toISOString()
   const committers = []
-  sorted.map(d => committers.find(c => c.user === d.user)
+  sorted.map(d => committers.find(c => (c.user === d.user || c.user === 'web-flow'))
     ? undefined
     : d.user === 'web-flow' ? committers.push({
       user: 'tsa-dom',
