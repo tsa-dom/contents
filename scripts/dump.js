@@ -27,10 +27,9 @@ const dump = async (data, fields) => {
   sorted.map(d => committers.find(c => c.user === d.user)
     ? undefined
     : d.user === 'web-flow' ? committers.push({
-      date: d.date,
       user: 'tsa-dom',
       avatar_url: 'https://avatars.githubusercontent.com/tsa-dom'
-    }) : committers.push(d)
+    }) : committers.push({ user: d.user, avatar_url: d.avatar_url })
   )
   data['committers'] = committers
   
